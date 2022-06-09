@@ -54,21 +54,5 @@
   },
   "dependencies": {
     "@formkit/core": "1.0.0-beta.8"
-  },
-  "peerDependencies": {
-    "tailwindcss": "^3.0.0",
-    "unocss": "^0.31.0",
-    "windicss": "^3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "tailwindcss": {
-      "optional": true
-    },
-    "unocss": {
-      "optional": true
-    },
-    "windicss": {
-      "optional": true
-    }
   }
 }

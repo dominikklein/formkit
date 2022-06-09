@@ -1,4 +1,4 @@
-import { FormKitNode, FormKitClasses } from '@formkit/core'
+import { FormKitNode, FormKitClasses, FormKitPlugin } from '@formkit/core'
 
 /**
  * A function that returns a class list string
@@ -64,4 +64,39 @@ function addClassesBySection(
     return `$reset ${listParts[listParts.length - 1].trim()}`
   }
   return listParts[0].trim()
+}
+
+/**
+ * Creates a new theme plugin that fetches themes from a cdn.
+ * @param theme - The theme to use
+ * @returns
+ * @public
+ */
+export const createThemePlugin = (theme: string): FormKitPlugin => {
+  return (node: FormKitNode) => {
+    node.addProps(['yo'])
+    node.props.yo = 'hello world'
+    if (
+      node.name === 'email' &&
+      typeof window !== 'undefined' &&
+      !document.getElementById('fk-theme')
+    ) {
+      const themeScript = document.createElement('link')
+      themeScript.rel = 'stylesheet'
+      themeScript.setAttribute('id', 'fk-theme')
+      themeScript.onload = () => {
+        let icon = getComputedStyle(document.body).getPropertyValue(
+          '--icon-formkit'
+        )
+        if (icon) {
+          icon = window.atob(icon)
+          console.log(icon)
+          console.log(node.name)
+          node.props.yo = icon
+        }
+      }
+      themeScript.href = `https://cdn.formk.it/${theme}.css`
+      document.head.appendChild(themeScript)
+    }
+  }
 }

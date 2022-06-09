@@ -13,6 +13,14 @@
       placeholder="jon@foo.com"
       validation="required|email|length:16,9"
       validation-visibility="live"
+      help="foo"
+      :sections-schema="{
+        help: {
+          attrs: {
+            innerHTML: '$yo'
+          }
+        }
+      }"
     />
     <FormKit
       id="fruit"
