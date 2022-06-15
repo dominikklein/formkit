@@ -10,8 +10,7 @@ import {
   buttonInput,
   buttonLabel,
 } from '../sections'
-import localize from '../features/localize'
-import ignore from '../features/ignore'
+import { localize, ignores } from '../features'
 
 /**
  * Input definition for a button.
@@ -46,5 +45,5 @@ export const button: FormKitTypeDefinition = {
   /**
    * Additional features that should be added to your input
    */
-  features: [localize('submit'), ignore],
+  features: [localize('submit'), ignores],
 }

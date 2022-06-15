@@ -11,7 +11,7 @@ import {
   suffix,
   textareaInput,
 } from '../sections'
-import initialValue from '../features/initialValue'
+import { initialValue } from '../features'
 
 /**
  * Input definition for a textarea.
